@@ -1,8 +1,10 @@
 package dev.giuliopime.jetpackdemos.demos.bottomAppBar
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,7 +26,7 @@ fun BottomAppBarScreen() {
 
     Column(
         verticalArrangement = Arrangement.Bottom,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
     ) {
         NavHost(
             navController = navController,
