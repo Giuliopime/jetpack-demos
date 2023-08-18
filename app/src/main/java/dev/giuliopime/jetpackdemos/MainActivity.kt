@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import dev.giuliopime.jetpackdemos.demos.bottomsheet.ModalBottomSheetScreen
-import dev.giuliopime.jetpackdemos.demos.colorpicker.ColorPickerScreen
+import dev.giuliopime.jetpackdemos.demos.bottomAppBar.BottomAppBarScreen
 import dev.giuliopime.jetpackdemos.ui.theme.JetpackDemosTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +17,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackDemosTheme {
                 // ModalBottomSheetScreen()
-                ColorPickerScreen()
+                // ColorPickerScreen()
+                BottomAppBarScreen()
             }
         }
     }
