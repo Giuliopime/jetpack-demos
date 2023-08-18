@@ -40,7 +40,6 @@ fun AccountPage() {
                 onClick = {
                     Timber.i("Clicked")
                 },
-                //modifier = Modifier.consumeWindowInsets(WindowInsets(bottom = 0.dp))
             ) {
                 Icon(imageVector = Icons.Rounded.Add, contentDescription = "Add")
             }
