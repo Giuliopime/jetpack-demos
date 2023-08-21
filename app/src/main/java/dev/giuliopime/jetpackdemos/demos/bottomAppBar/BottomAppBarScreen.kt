@@ -1,5 +1,6 @@
 package dev.giuliopime.jetpackdemos.demos.bottomAppBar
 
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,15 +34,47 @@ fun BottomAppBarScreen() {
             startDestination = BottomAppBarPage.Account.route,
             modifier = Modifier.weight(1f)
         ) {
-            composable(BottomAppBarPage.Feed.route) {
+            composable(
+                route = BottomAppBarPage.Feed.route,
+                enterTransition = {
+                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                },
+                exitTransition = {
+                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                }
+            ) {
                 Text(text = "Feed")
             }
 
-            composable(BottomAppBarPage.Account.route) {
+            composable(
+                route = BottomAppBarPage.Account.route,
+                enterTransition = {
+                    if (initialState.destination.route == BottomAppBarPage.Settings.route) {
+                        slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                    } else {
+                        slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                    }
+                },
+                exitTransition = {
+                    if (targetState.destination.route == BottomAppBarPage.Settings.route) {
+                        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                    } else {
+                        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                    }
+                }
+            ) {
                 AccountPage()
             }
 
-            composable(BottomAppBarPage.Settings.route) {
+            composable(
+                route = BottomAppBarPage.Settings.route,
+                enterTransition = {
+                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+                },
+                exitTransition = {
+                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+                }
+            ) {
                 Text(text = "Settings")
             }
         }
