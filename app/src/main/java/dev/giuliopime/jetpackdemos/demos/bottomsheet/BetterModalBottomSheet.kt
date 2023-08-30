@@ -3,8 +3,11 @@ package dev.giuliopime.jetpackdemos.demos.bottomsheet
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
@@ -41,6 +44,8 @@ fun BetterModalBottomSheet(
     windowInsets: WindowInsets = WindowInsets.displayCutout,
     content: @Composable ColumnScope.() -> Unit,
 ) {
+    val bottomPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
     if (showSheet) {
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
@@ -54,7 +59,7 @@ fun BetterModalBottomSheet(
             dragHandle = dragHandle,
             windowInsets = windowInsets
         ) {
-            Column(modifier = Modifier.navigationBarsPadding()) {
+            Column(modifier = Modifier.padding(bottom = bottomPadding)) {
                 content()
             }
         }
